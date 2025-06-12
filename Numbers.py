@@ -2,7 +2,7 @@ import random
 import time
 import sys
 
-def typewriter_print(text, delay=0.03):
+def typewriter_print(text, delay=0.02):
     """Print text with typewriter effect."""
     for char in text:
         sys.stdout.write(char)
@@ -71,9 +71,11 @@ def separation_mode(lists):
             return
         
         print()
-        choice = input("Which list do you want to use? (Enter the letter): ").upper()
+        choice = input("Which list do you want to use? (Enter the letter or 'Back' to return to Main menu.): ").upper()
         
-        if choice in lists:
+        if choice == "BACK":
+            return  # Return to main loop
+        elif choice in lists:
             result = list_menu(lists, choice)
             if result == "exit":
                 return "exit"
@@ -82,7 +84,7 @@ def separation_mode(lists):
             else:
                 break  # Normal completion, exit separation mode
         else:
-            typewriter_print("Invalid choice. Please enter a valid list letter.")
+            typewriter_print("Invalid choice. Please enter a valid list letter or 'Back'.")
 
 def list_menu(lists, list_identity):
     """Menu for a specific list - view or separate."""
