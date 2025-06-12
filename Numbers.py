@@ -134,7 +134,8 @@ def post_separation_menu(lists):
                 return "exit"
             break
         elif choice == "generate":
-            break  # Will return to main loop
+            generate_mode(lists)
+            continue
         elif choice == "exit":
             typewriter_print("Goodbye!")
             return "exit"
